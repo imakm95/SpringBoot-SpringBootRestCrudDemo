@@ -1,0 +1,7 @@
+-- Spring boot includes auto configurations for template engines:
+	1) FreeMarker
+	2) Mustache
+	3) ThymeLeaf  (Very Popular)
+
+
+-- By default spring boot will load template from src/main/resources/templates directory

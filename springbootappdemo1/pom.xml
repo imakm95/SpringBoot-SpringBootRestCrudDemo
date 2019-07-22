@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	
+	
+	
+	
+	
+	<parent>
+	<!-- Spring boot starter parent is a a special starter that provides Maven defaults such as default compiler level, UTF encoding etc
+		 dependency management by setting up other Starter's Version, UTF source encoding etc 
+		 These defaults can be overridden as well suing <properties></properties> 
+		 Default configuration of spring-boot-maven-plugin   -->
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.1.0.RELEASE</version> <!-- this version will be used for all the child Spring-boot-starter-* -->
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	
+	
+	
+	
+	<groupId>com.ashwani.springbootdemo</groupId>
+	<artifactId>springbootappdemo1</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>springbootappdemo1</name>
+	<description>Demo project for Spring Boot</description>
+	
+	
+	
+
+	<properties>
+		<java.version>1.8</java.version>   <!-- Overriding Maven defaults set by Spring-boot-starter-parent -->
+	</properties>
+
+
+
+
+
+<!-- Spring boot starters are basically collection of Maven dependencies grouped together which are compatible versions and thoroughly tested and verified by spring developers, thus less error prone,
+		It basically acts as a one stop shop and saves the developers to write the list of individual dependencies and that is very very error prone
+		It reduces the amount of POM configuration 
+		It also makes sure that we have compatible versions of dependencies to avoid jar version conflicts
+		Almost 30+ starters and more and we can see the starter's list also we can see what dependencies are included in that particular starters -->
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+
+
+
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		
+		
+		
+		
+		
+		<!-- Adding support for Spring-boot-devtools for autoreloading feature -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+		</dependency>
+		
+		
+		
+		
+		
+		
+		
+		<!-- Add support for spring-boot-starter-actuator :
+		It adds new rest endpoints to the application for free through which we can monitor/manage our application,
+		 check application metrics, its health, status and other info so Out of the box devops functionality	
+		 1) all endpoints are prefixed with /actuator
+		 2) /health, /info, /beans,
+		 3) /health tells whether the app is up or down by default
+		 4) /info gives information about the project, by default gives empty json, can be overriden using info.* properties in application.property file
+		 5) /beans gives list of all the beans regiesterd with the apllication context
+		 6) /threaddump gives all the threads running for our application
+		 7) /env gives all the env related properties
+		 8) /maping gives the list all the @requestmapping endpoints that are on the applications
+		 9) by default only the /health and /info are exposed
+		 10) to expose all the other actuator endpoits we have to write "management.endpoints.web.exposure.include=*"  in the application.properties file
+		 11) we can also expose individual endpoints using a comma separated list
+		 
+		 12) we can secure these endpoints by adding spring-boot-starter-security dependency to our project, 
+		 however even after adding security; /health & /info will not prompt for password...
+		 however we can hide them by adding "management.endpoints.web.exposure.exclude=health,info" in application.properties file
+		 Default username=user and default password will be printed in the logs, 
+		 but we can override them by adding following entries in application.properties file
+		 	spring.security.user.name=XYZ
+		 	spring.security.user.password=XXX		 	
+		 we can also use database for roles, passwords  for securing our endpoints
+		 -->
+		 <dependency>
+		 	<groupId>org.springframework.boot</groupId>
+		 	<artifactId>spring-boot-starter-actuator</artifactId>
+		 </dependency>
+		 
+		 
+		 
+		 
+		 
+		 
+		 <!-- Adding support for spring security, here for securing the endpoints -->
+		 <dependency>
+		 	<groupId>org.springframework.boot</groupId>
+		 	<artifactId>spring-boot-starter-security</artifactId>
+		 </dependency>
+	</dependencies>
+
+
+
+
+
+
+	<build>
+		<plugins>
+			<plugin>
+			<!-- Spring boot maven plugin is used to package a executable jar or war file. It can also be used to run the application using:
+				 mvn package 
+				 mvn spring-boot:run  -->
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

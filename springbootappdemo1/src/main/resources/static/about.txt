@@ -1,0 +1,10 @@
+-- By default, spring boot will load all the static resources from this directory
+
+-- Examples of static resources are HTML,CSS,BootStrap,JavaScript,Images etc
+
+
+
+-----------Warning-------------
+Do not use src/main/webapp folder ever if you're packaging your applications as a JAR. 
+Although src/main/webapp  is a standard Maven Directory, but it only works with WAR packaging.
+Most of the Build Tools silently ignore src/main/webapp  directory in case of JAR packaging. 
